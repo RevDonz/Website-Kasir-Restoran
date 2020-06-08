@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 01 Apr 2020 pada 14.22
--- Versi Server: 10.1.30-MariaDB
--- PHP Version: 7.2.1
+-- Generation Time: Jun 08, 2020 at 07:55 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -25,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_detail_order`
+-- Table structure for table `tb_detail_order`
 --
 
 CREATE TABLE `tb_detail_order` (
@@ -33,7 +32,7 @@ CREATE TABLE `tb_detail_order` (
   `check_available` int(11) NOT NULL,
   `id_order` varchar(50) NOT NULL,
   `id_masakan` int(11) NOT NULL,
-  `keterangan_dorder` text,
+  `keterangan_dorder` text DEFAULT NULL,
   `jumlah_dorder` int(11) NOT NULL,
   `hartot_dorder` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
@@ -41,38 +40,17 @@ CREATE TABLE `tb_detail_order` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tb_detail_order`
+-- Dumping data for table `tb_detail_order`
 --
 
 INSERT INTO `tb_detail_order` (`id_dorder`, `check_available`, `id_order`, `id_masakan`, `keterangan_dorder`, `jumlah_dorder`, `hartot_dorder`, `id_user`, `status_dorder`) VALUES
-(28, 1, 'ORD0001', 22, 'jangan pedes', 5, 175000, 1, 0),
-(29, 1, 'ORD0001', 26, 'manis', 5, 40000, 1, 0),
-(30, 2, 'ORD0002', 13, '', 6, 180000, 1, 0),
-(31, 2, 'ORD0002', 19, '', 2, 10000, 1, 0),
-(32, 2, 'ORD0002', 16, '', 3, 27000, 1, 0),
-(33, 2, 'ORD0002', 25, '', 1, 9000, 1, 0),
-(35, 3, 'ORD0003', 22, '', 4, 140000, 6, 0),
-(40, 4, 'ORD0004', 13, '', 1, 30000, 1, 0),
-(41, 5, 'ORD0005', 15, '', 1, 15000, 1, 0),
-(42, 6, 'ORD0006', 12, '', 4, 100000, 1, 0),
-(43, 6, 'ORD0006', 16, '', 4, 36000, 1, 0),
-(44, 6, 'ORD0006', 20, '', 3, 24000, 1, 0),
-(48, 7, 'ORD0007', 13, 'Jangan kelamaan', 5, 150000, 1, 0),
-(49, 7, 'ORD0007', 16, '', 2, 18000, 1, 0),
-(50, 7, 'ORD0007', 26, '', 6, 48000, 1, 0),
-(51, 7, 'ORD0007', 22, '', 2, 70000, 1, 0),
-(52, 8, 'ORD0008', 15, '', 9, 135000, 1, 0),
-(53, 8, 'ORD0008', 18, '', 6, 30000, 1, 0),
-(54, 8, 'ORD0008', 25, '', 5, 45000, 1, 0),
-(55, 8, 'ORD0008', 13, '', 2, 60000, 1, 0),
-(56, 8, 'ORD0008', 19, '', 4, 20000, 1, 0),
-(58, 9, 'ORD0009', 15, '', 3, 45000, 1, 0),
-(59, 10, 'ORD00010', 12, '', 1, 25000, 0, 0);
+(64, 1, 'ORD0001', 12, 'pedes', 6, 150000, 8, 0),
+(65, 1, 'ORD0001', 16, '', 1, 9000, 8, 0);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_level`
+-- Table structure for table `tb_level`
 --
 
 CREATE TABLE `tb_level` (
@@ -81,7 +59,7 @@ CREATE TABLE `tb_level` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tb_level`
+-- Dumping data for table `tb_level`
 --
 
 INSERT INTO `tb_level` (`id_level`, `level`) VALUES
@@ -94,7 +72,7 @@ INSERT INTO `tb_level` (`id_level`, `level`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_masakan`
+-- Table structure for table `tb_masakan`
 --
 
 CREATE TABLE `tb_masakan` (
@@ -107,7 +85,7 @@ CREATE TABLE `tb_masakan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tb_masakan`
+-- Dumping data for table `tb_masakan`
 --
 
 INSERT INTO `tb_masakan` (`id_masakan`, `kategori_masakan`, `nama_masakan`, `harga_masakan`, `foto`, `status_masakan`) VALUES
@@ -126,12 +104,12 @@ INSERT INTO `tb_masakan` (`id_masakan`, `kategori_masakan`, `nama_masakan`, `har
 (24, 'Makanan', 'Ayam Rica-Rica', 33000, '29022020063741rica.jpg', 1),
 (25, 'Minuman', 'Jus Jambu', 9000, '29022020064540jambu.jpg', 1),
 (26, 'Minuman', 'Jus Strawberri', 8000, '29022020064611stro.jpg', 1),
-(27, 'Minuman', 'Es Campur', 10000, '12032020114043struktur.png', 1);
+(27, 'Minuman', 'Es Campur', 10000, '08062020122131campur.png', 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_meja`
+-- Table structure for table `tb_meja`
 --
 
 CREATE TABLE `tb_meja` (
@@ -140,12 +118,12 @@ CREATE TABLE `tb_meja` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tb_meja`
+-- Dumping data for table `tb_meja`
 --
 
 INSERT INTO `tb_meja` (`meja_id`, `status`) VALUES
-(1, 1),
-(2, 1),
+(1, 0),
+(2, 0),
 (3, 0),
 (4, 0),
 (5, 0),
@@ -158,7 +136,7 @@ INSERT INTO `tb_meja` (`meja_id`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_order`
+-- Table structure for table `tb_order`
 --
 
 CREATE TABLE `tb_order` (
@@ -167,30 +145,21 @@ CREATE TABLE `tb_order` (
   `tanggal_order` int(11) NOT NULL,
   `aTanggal_order` varchar(128) NOT NULL,
   `id_user` int(11) NOT NULL,
-  `keterangan_order` text,
+  `keterangan_order` text DEFAULT NULL,
   `status_order` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tb_order`
+-- Dumping data for table `tb_order`
 --
 
 INSERT INTO `tb_order` (`id_order`, `meja_order`, `tanggal_order`, `aTanggal_order`, `id_user`, `keterangan_order`, `status_order`) VALUES
-('ORD0001', 1, 1584421827, '17-03-2020', 1, 'jangan lama ya', '1'),
-('ORD00010', 1, 1585742978, '01-04-2020', 0, '', '0'),
-('ORD0002', 4, 1584438024, '17-03-2020', 1, 'lama', '1'),
-('ORD0003', 3, 1584504489, '18-03-2020', 6, '', '1'),
-('ORD0004', 5, 1584505049, '18-03-2020', 1, '', '1'),
-('ORD0005', 1, 1584519508, '18-03-2020', 1, '', '1'),
-('ORD0006', 3, 1584604793, '19-03-2020', 1, '', '1'),
-('ORD0007', 3, 1585206678, '26-03-2020', 1, 'jangan lama', '1'),
-('ORD0008', 2, 1585206736, '26-03-2020', 1, '', '0'),
-('ORD0009', 3, 1585742867, '01-04-2020', 1, '', '1');
+('ORD0001', 1, 1591074127, '02-06-2020', 8, 'jangan lama', '1');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_transaksi`
+-- Table structure for table `tb_transaksi`
 --
 
 CREATE TABLE `tb_transaksi` (
@@ -207,23 +176,16 @@ CREATE TABLE `tb_transaksi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tb_transaksi`
+-- Dumping data for table `tb_transaksi`
 --
 
 INSERT INTO `tb_transaksi` (`id_transaksi`, `id_user`, `id_order`, `tanggal_transaksi`, `aTanggal_transaksi`, `hartot_transaksi`, `diskon_transaksi`, `totbar_transaksi`, `uang_transaksi`, `kembalian_transaksi`) VALUES
-(15, 10, 'ORD0001', 1584439258, '17-03-2020', 215000, 50, 107500, 120000, 12500),
-(16, 0, 'ORD0002', 1584449806, '17-03-2020', 226000, 0, 226000, 250000, 24000),
-(17, 8, 'ORD0003', 1584504519, '18-03-2020', 140000, 0, 140000, 150000, 10000),
-(18, 0, 'ORD0004', 1584505556, '18-03-2020', 30000, 0, 30000, 30000, 0),
-(19, 0, 'ORD0005', 1584519572, '18-03-2020', 15000, 0, 15000, 20000, 5000),
-(20, 0, 'ORD0006', 1584604809, '19-03-2020', 160000, 0, 160000, 200000, 40000),
-(21, 9, 'ORD0007', 1585206764, '26-03-2020', 286000, 10, 257400, 260000, 2600),
-(22, 0, 'ORD0009', 1585742923, '01-04-2020', 45000, 30, 31500, 35000, 3500);
+(26, 8, 'ORD0001', 1591074220, '02-06-2020', 159000, 50, 79500, 100000, 20500);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_user`
+-- Table structure for table `tb_user`
 --
 
 CREATE TABLE `tb_user` (
@@ -235,7 +197,7 @@ CREATE TABLE `tb_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tb_user`
+-- Dumping data for table `tb_user`
 --
 
 INSERT INTO `tb_user` (`id_user`, `username`, `password`, `nama_user`, `id_level`) VALUES
@@ -303,7 +265,7 @@ ALTER TABLE `tb_user`
 -- AUTO_INCREMENT for table `tb_detail_order`
 --
 ALTER TABLE `tb_detail_order`
-  MODIFY `id_dorder` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `id_dorder` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT for table `tb_level`
@@ -327,7 +289,7 @@ ALTER TABLE `tb_meja`
 -- AUTO_INCREMENT for table `tb_transaksi`
 --
 ALTER TABLE `tb_transaksi`
-  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `tb_user`
